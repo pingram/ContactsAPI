@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(:version => 20130815185056) do
   create_table "contacts", :force => true do |t|
     t.string   "name",       :null => false
     t.string   "email",      :null => false
-    t.boolean  "favorited",  :null => false
     t.integer  "user_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

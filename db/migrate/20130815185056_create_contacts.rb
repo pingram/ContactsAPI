@@ -3,7 +3,6 @@ class CreateContacts < ActiveRecord::Migration
     create_table :contacts do |t|
       t.string :name, :null => false
       t.string :email, :null => false
-      t.boolean :favorited, :null => false
       t.integer :user_id, :null => false
 
       t.timestamps
