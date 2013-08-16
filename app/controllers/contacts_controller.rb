@@ -11,6 +11,7 @@ class ContactsController < ApplicationController
 
   def destroy
     Contact.find(params[:id]).destroy
+    head :ok
   end
 
   def index
