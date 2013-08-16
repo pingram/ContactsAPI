@@ -1,4 +1,5 @@
 FirstRoutes::Application.routes.draw do
+  resources :contacts
   resources :users
   
   # get "/users", :to => "users#index"
