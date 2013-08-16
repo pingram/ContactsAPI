@@ -1,5 +1,6 @@
 FirstRoutes::Application.routes.draw do
   resources :contacts
+  resources :contact_shares, :only => [:create, :destroy]
   resources :users
   
   # get "/users", :to => "users#index"
