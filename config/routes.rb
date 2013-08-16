@@ -1,7 +1,9 @@
 FirstRoutes::Application.routes.draw do
-  resources :contacts
+  resources :contacts, :except => [:index]
   resources :contact_shares, :only => [:create, :destroy]
-  resources :users
+  resources :users do
+    resources :contacts, :only => [:index]
+  end
   
   # get "/users", :to => "users#index"
   # post "/users", :to => "users#create"
