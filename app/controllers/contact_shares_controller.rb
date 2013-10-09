@@ -1,7 +1,7 @@
 class ContactSharesController < ApplicationController
   def create
     ContactShare.create(params[:contact_share])
-    head :ok
+    head :created
   end
 
   def destroy
