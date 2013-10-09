@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(params[:contact])
 
     if @contact.save
-      render :json => @contact
+      render :json => @contact, :status => :created
     else
       render :json => @contact.errors.full_messages, :status => :unprocessable_entity
     end
