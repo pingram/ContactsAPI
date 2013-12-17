@@ -9,5 +9,6 @@ class CreateContacts < ActiveRecord::Migration
     end
 
     add_index :contacts, :user_id
+    add_index :contacts, :email, :unique => true
   end
 end

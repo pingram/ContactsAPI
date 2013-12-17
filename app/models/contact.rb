@@ -3,9 +3,10 @@ class Contact < ActiveRecord::Base
 
   has_many :contact_shares
   has_many :shared_users, :through => :contact_shares, :source => :contact
-  belongs_to :user
+  belongs_to :owner, :foreign_key => :user_id, :class_name => "User"
 
   validates :name, :email, :user_id, :presence => true
+  validates :email, :presence => true
 
   def self.contacts_for_user_id(user_id)
     joins_cond = <<-SQL
