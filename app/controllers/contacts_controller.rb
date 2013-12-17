@@ -5,13 +5,16 @@ class ContactsController < ApplicationController
     if @contact.save
       render :json => @contact, :status => :created
     else
-      render :json => @contact.errors.full_messages, :status => :unprocessable_entity
+      render(
+        :json => @contact.errors.full_messages,
+        :status => :unprocessable_entity
+      )
     end
   end
 
   def destroy
-    Contact.find(params[:id]).destroy
-    head :ok
+    @contact = Contact.find(params[:id])
+    render :json => @contact.destroy
   end
 
   def index
@@ -28,7 +31,10 @@ class ContactsController < ApplicationController
     if @contact.update_attributes(params[:contact])
       render :json => @contact
     else
-      render :json => @contact.errors.full_messages, :status => :unprocessable_entity    
+      render(
+        :json => @contact.errors.full_messages,
+        :status => :unprocessable_entity
+      )
     end
   end
 end
