@@ -1,11 +1,12 @@
 class ContactSharesController < ApplicationController
   def create
-    ContactShare.create(params[:contact_share])
-    head :created
+    @share = ContactShare.create(params[:contact_share])
+    render :json => @share
   end
 
   def destroy
-    ContactShare.find(params[:id]).destroy
-    head :ok
+    @share = ContactShare.find(params[:id])
+    @share.destroy
+    render :json => @share
   end
 end

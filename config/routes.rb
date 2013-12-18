@@ -1,7 +1,7 @@
 FirstRoutes::Application.routes.draw do
   resources(
     :contacts,
-    :only => [:create, :destroy, :index, :show, :update]
+    :only => [:create, :destroy, :show, :update]
   )
   resources :contact_shares, :only => [:create, :destroy]
 
