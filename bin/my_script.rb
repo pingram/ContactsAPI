@@ -22,7 +22,7 @@ def create_user
 
   puts RestClient.post(
     url,
-    { :user => { :name => "Gizmo", :email => "gizmo@gizmo.gizmo"} }
+    { :user => { :username => "Gizmo" } }
   )
 end
 
