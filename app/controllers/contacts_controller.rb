@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   def create
-    @contact = Contact.new(params[:contact])
+    @contact = Contact.new(contact_params)
 
     if @contact.save
       render :json => @contact, :status => :created
@@ -28,7 +28,7 @@ class ContactsController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
 
-    if @contact.update_attributes(params[:contact])
+    if @contact.update_attributes(contact_params)
       render :json => @contact
     else
       render(
@@ -37,4 +37,9 @@ class ContactsController < ApplicationController
       )
     end
   end
+
+    private
+    def contact_params
+      params.require(:contact).permit(:name, :email, :user_id)
+    end
 end

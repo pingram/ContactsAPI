@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.save
       render :json => @user, :status => :created
     else
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       render :json => @user
     else
       render(
@@ -35,4 +35,9 @@ class UsersController < ApplicationController
       )
     end
   end
+
+    private
+    def user_params
+      params.require(:user).permit(:username)
+    end
 end

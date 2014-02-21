@@ -1,5 +1,4 @@
 class Contact < ActiveRecord::Base
-  attr_accessible :name, :email, :user_id
 
   has_many :contact_shares
   has_many :shared_users, :through => :contact_shares, :source => :contact
