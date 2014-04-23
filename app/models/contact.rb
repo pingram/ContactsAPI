@@ -4,7 +4,7 @@ class Contact < ActiveRecord::Base
   belongs_to :owner, :foreign_key => :user_id, :class_name => "User"
 
   validates :name, :email, :user_id, :presence => true
-  validates :email, :presence => true
+  validates :email, :uniqueness => true
 
   def self.contacts_for_user_id(user_id)
     joins_cond = <<-SQL
